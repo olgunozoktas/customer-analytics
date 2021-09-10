@@ -20,7 +20,7 @@ class CreateCustomersTable extends Migration
             $table->string('gsm_no');
             $table->unsignedBigInteger('department_id');
             $table->foreign('department_id')->references('id')->on('departments');
-            $table->dateTime('birthday');
+            $table->date('birthday');
             $table->softDeletes();
             $table->timestamps();
         });
