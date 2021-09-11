@@ -26,6 +26,7 @@
         "@tailwindcss/line-clamp": "^0.2.1",
         "bootstrap": "^5.1.1",
         "tailwindcss-dropdown": "^1.0.0",
+        "vform": "^2.1.1",
         "vue": "^2.6.14"
     }
 }

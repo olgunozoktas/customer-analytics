@@ -1,28 +1,43 @@
 <template>
-    <div class="flex flex-col text-2xl text-gray-800">
-        <h1 class="w-full bg-white shadow py-2 px-4 rounded-lg">Müşteriler Listesi</h1>
-    </div>
+    <section class="text-gray-600 body-font">
+        <div class="container px-5 py-4 mx-auto bg-white">
+            <div v-if="!create && !edit">
+                <customer-data-component/>
+            </div>
+            <div v-if="create">
+                <create-customer-component/>
+            </div>
+        </div>
+    </section>
 </template>
 
 <script>
 
+import CustomerDataComponent from "./CustomerDataComponent";
+import CreateCustomerComponent from "./CreateCustomerComponent";
+
 export default {
+    components: {
+        'customer-data-component': CustomerDataComponent,
+        'create-customer-component': CreateCustomerComponent,
+    },
     props: [''],
     data() {
         return {
-            customers: []
+            edit: false,
+            create: true,
         }
     },
 
     methods: {
-        loadData() {
-            axios.get(window.baseUrl + 'api/customers/data').then(res => {
-                console.log(res.data);
-            }).catch(e => console.log(e.message))
+        createNew() {
+            this.create = !this.create;
         }
     },
     mounted() {
-        this.loadData();
+        Fire.$on(['cancel', 'create'], () => {
+            this.createNew();
+        });
     }
 }
 </script>
