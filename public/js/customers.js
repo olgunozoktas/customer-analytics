@@ -25451,14 +25451,14 @@ var render = function() {
             "div",
             {
               staticClass:
-                "flex flex-row gap-2 justify-between border-t border-gray-200 pt-4"
+                "flex flex-col flex-col-reverse md:flex-row gap-2 justify-between border-t border-gray-200 pt-4"
             },
             [
               _c(
                 "button",
                 {
                   staticClass:
-                    "flex flex-row gap-2 items-center py-2 px-8 h-12 bg-primary-button hover:bg-primary hover:text-white transition duration-150 ease-in-out text-black font-bold rounded-full font-sans",
+                    "flex flex-row gap-2 justify-center md:justify-start items-center py-2 px-8 h-12 bg-primary-button hover:bg-primary hover:text-white transition duration-150 ease-in-out text-black font-bold rounded-full font-sans",
                   on: { click: _vm.cancel }
                 },
                 [
@@ -25490,7 +25490,7 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _c("div", { staticClass: "flex flex-row gap-2" }, [
+              _c("div", { staticClass: "flex flex-col md:flex-row gap-2" }, [
                 _c("div", { staticClass: "flex flex-row items-center gap-2" }, [
                   _c(
                     "p",
@@ -25535,7 +25535,7 @@ var render = function() {
                   "button",
                   {
                     staticClass:
-                      "flex flex-row gap-2 items-center py-2 px-8 h-12 bg-primary-button hover:bg-primary hover:text-white transition duration-150 ease-in-out text-black font-bold rounded-full font-sans"
+                      "flex flex-row gap-2 justify-center md:justify-start items-center py-2 px-8 h-12 bg-primary-button hover:bg-primary hover:text-white transition duration-150 ease-in-out text-black font-bold rounded-full font-sans"
                   },
                   [
                     _vm._v(

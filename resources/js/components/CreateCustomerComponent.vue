@@ -44,9 +44,9 @@
                              v-html="form.errors.get('department_id')"/>
                     </div>
                 </div>
-                <div class="flex flex-row gap-2 justify-between border-t border-gray-200 pt-4">
+                <div class="flex flex-col flex-col-reverse md:flex-row gap-2 justify-between border-t border-gray-200 pt-4">
                     <button @click="cancel"
-                            class="flex flex-row gap-2 items-center py-2 px-8 h-12 bg-primary-button hover:bg-primary hover:text-white transition duration-150 ease-in-out text-black font-bold rounded-full font-sans">
+                            class="flex flex-row gap-2 justify-center md:justify-start items-center py-2 px-8 h-12 bg-primary-button hover:bg-primary hover:text-white transition duration-150 ease-in-out text-black font-bold rounded-full font-sans">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                              xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -54,7 +54,7 @@
                         </svg>
                         Mevcut Kayıtlar
                     </button>
-                    <div class="flex flex-row gap-2">
+                    <div class="flex flex-col md:flex-row gap-2">
                         <div class="flex flex-row items-center gap-2">
                             <p class="bg-primary text-white py-2 px-4 rounded-lg">{{ this.captcha }}</p>
                             <div class="w-full flex flex-col gap-1">
@@ -64,7 +64,7 @@
                             </div>
                         </div>
                         <button
-                            class="flex flex-row gap-2 items-center py-2 px-8 h-12 bg-primary-button hover:bg-primary hover:text-white transition duration-150 ease-in-out text-black font-bold rounded-full font-sans">
+                            class="flex flex-row gap-2 justify-center md:justify-start items-center py-2 px-8 h-12 bg-primary-button hover:bg-primary hover:text-white transition duration-150 ease-in-out text-black font-bold rounded-full font-sans">
                             Kaydet
                         </button>
                     </div>
