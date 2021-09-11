@@ -5,7 +5,7 @@
                 <customer-data-component/>
             </div>
             <div v-if="create">
-                <create-customer-component/>
+                <create-customer-component :captcha="captcha"/>
             </div>
         </div>
     </section>
@@ -21,7 +21,7 @@ export default {
         'customer-data-component': CustomerDataComponent,
         'create-customer-component': CreateCustomerComponent,
     },
-    props: [''],
+    props: ['captcha'],
     data() {
         return {
             edit: false,
@@ -32,7 +32,7 @@ export default {
     methods: {
         createNew() {
             this.create = !this.create;
-        }
+        },
     },
     mounted() {
         Fire.$on(['cancel', 'create', 'create-success'], (e) => {

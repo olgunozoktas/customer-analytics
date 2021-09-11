@@ -49,8 +49,8 @@
                 </table>
             </div>
             <div v-if="current_page_url !== next_page_url || current_page_url !== previous_page_url" class="w-full flex flex-row justify-end gap-2 border-t border-gray-400 pt-4">
-                <button v-if="current_page_url !== previous_page_url" @click="loadData(false)"
-                    class="flex flex-row gap-2 items-center py-2 px-8 bg-primary-button hover:bg-primary hover:text-white transition duration-150 ease-in-out text-black font-bold rounded-full font-sans">
+                <button :disabled="current_page_url === previous_page_url" @click="loadData(false)"
+                    :class="current_page_url === previous_page_url ? 'bg-gray-200 text-gray-500 cursor-not-allowed' : 'bg-primary-button hover:bg-primary hover:text-white cursor-hover'" class="flex flex-row gap-2 items-center py-2 px-8 transition duration-150 ease-in-out text-black font-bold rounded-full font-sans">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                          xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -58,8 +58,8 @@
                     </svg>
                     Önceki Veriler
                 </button>
-                <button v-if="current_page_url !== next_page_url" @click="loadData"
-                    class="flex flex-row gap-2 items-center py-2 px-8 bg-primary-button hover:bg-primary hover:text-white transition duration-150 ease-in-out text-black font-bold rounded-full font-sans">
+                <button :disabled="current_page_url === next_page_url" @click="loadData"
+                        :class="current_page_url === next_page_url ? 'bg-gray-200 text-gray-500 cursor-not-allowed' : 'bg-primary-button hover:bg-primary hover:text-white cursor-hover'" class="flex flex-row gap-2 items-center py-2 px-8 transition duration-150 ease-in-out text-black font-bold rounded-full font-sans">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                          xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>

@@ -4,12 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CustomerStoreRequest;
 use App\Models\Customer;
-use Illuminate\Http\Request;
+use App\Responses\CustomerStoreResponse;
+use App\Utils\Captcha;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Log;
 
 class CustomerController extends Controller
 {
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function index()
     {
@@ -17,34 +24,39 @@ class CustomerController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\Pagination\Paginator
+     * @return Paginator
      */
     public function data()
     {
-        return Customer::with('department')->orderBy('created_at','desc')->simplePaginate(5);
+        return Customer::with('department')
+            ->orderBy('created_at', 'desc')
+            ->simplePaginate(5);
     }
 
     /**
+     * All validations made through CustomerStoreRequest
      * @param CustomerStoreRequest $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function store(CustomerStoreRequest $request)
     {
-        /**
-         * Since the request data already validated, we can get the ones we need
-         */
-        $data = $request->except(['_token','id']);
-
-        if(Customer::create($data)) {
-            return response()->json([
-                'response' => 'success',
-                'message' => 'Müşteri Kaydı Başarıyla Oluşturuldu'
-            ]);
+        if(!Captcha::validate($request->captcha)) {
+            return Captcha::errorResponseAsJSON();
         }
 
-        return response()->json([
-            'response' => 'error',
-            'message' => 'Müşteri Kaydı Oluşturulurken Hata Meydana Geldi'
-        ]);
+        try {
+            /**
+             * Since the request data already validated, we can get the ones we need
+             */
+            $data = $request->except(['_token', 'id', 'captcha']);
+
+            if (Customer::create($data)) {
+                return CustomerStoreResponse::successfullyCreated();
+            }
+        } catch (\Exception $exception) {
+            Log::alert("Müşteri Kaydı Oluştururken Hata Meydana Geldi: " . $exception->getMessage(), $request->all());
+        }
+
+        return CustomerStoreResponse::errorOccurredWhileCreating();
     }
 }

@@ -28,10 +28,16 @@ class CustomerStoreRequest extends FormRequest
             'email' => 'required|email|max:50',
             'gsm_no' => 'required|max:25',
             'birthday' => 'required|date',
-            'department_id' => 'required|exists:departments,id'
+            'department_id' => 'required|exists:departments,id',
+            'captcha' => 'required',
         ];
     }
 
+    /**
+     * Return the appropriate message for the validation errors
+     *
+     * @return string[]
+     */
     public function messages()
     {
         return [
@@ -46,7 +52,8 @@ class CustomerStoreRequest extends FormRequest
             'birthday.required' => 'Müşterinin Doğum Tarihi Girilmelidir',
             'birthday.date' => 'Girilen Tarih Bilgisi Geçerli Değildir!',
             'department_id.required' => 'Müşterinin Birimi Seçilmelidir',
-            'department_id.exists' => 'Seçilen Birim Geçerli Değildir!'
+            'department_id.exists' => 'Seçilen Birim Geçerli Değildir!',
+            'captcha.required' => 'Doğrulama Kodu Girilmelidir'
         ];
     }
 }

@@ -7,7 +7,7 @@
 
     <div class="py-8" id="customers">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <customers/>
+            <customers captcha="{{ \App\Utils\Captcha::generate() }}"></customers>
         </div>
     </div>
 </x-app-layout>

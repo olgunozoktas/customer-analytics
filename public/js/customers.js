@@ -4083,13 +4083,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var success = 'success';
 var error = 'error';
 var warning = 'warning';
-var warningMessage = 'Hata Meydana Geldi\nLütfen Gönderdiğiniz Verileri Kontrol Ediniz.';
+var warningMessage = 'Lütfen Gönderdiğiniz Verileri Kontrol Ediniz.';
+var missingCaptchaCode = 'Doğrulama Kodunu Girmelisiniz.';
+var unprocessableEntity = 422;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: [''],
+  props: ['captcha'],
   data: function data() {
     return {
       departments: [],
@@ -4099,7 +4118,8 @@ var warningMessage = 'Hata Meydana Geldi\nLütfen Gönderdiğiniz Verileri Kontr
         email: '',
         gsm_no: '',
         birthday: '',
-        department_id: ''
+        department_id: '',
+        captcha: ''
       })
     };
   },
@@ -4116,6 +4136,17 @@ var warningMessage = 'Hata Meydana Geldi\nLütfen Gönderdiğiniz Verileri Kontr
       });
     },
     saveCustomerData: function saveCustomerData() {
+      var _this2 = this;
+
+      if (this.form.captcha === '') {
+        toast.fire({
+          position: "top",
+          icon: warning,
+          title: missingCaptchaCode
+        });
+        return;
+      }
+
       this.form.post(window.baseUrl + "api/customer/store").then(function (res) {
         toast.fire({
           position: "top",
@@ -4124,14 +4155,20 @@ var warningMessage = 'Hata Meydana Geldi\nLütfen Gönderdiğiniz Verileri Kontr
         });
 
         if (res.data.response === success) {
+          _this2.form.clear();
+
           Fire.$emit('create-success');
         }
       })["catch"](function (e) {
-        toast.fire({
-          position: "top",
-          icon: warning,
-          title: warningMessage
-        });
+        var errors = e.response.data.errors;
+
+        if (e.response.status === unprocessableEntity) {
+          toast.fire({
+            position: "top",
+            icon: warning,
+            title: errors.captcha !== undefined && errors.length === 0 ? e.response.data.errors.captcha : warningMessage
+          });
+        }
       });
     },
     cancel: function cancel() {
@@ -4178,7 +4215,7 @@ __webpack_require__.r(__webpack_exports__);
     'customer-data-component': _CustomerDataComponent__WEBPACK_IMPORTED_MODULE_0__["default"],
     'create-customer-component': _CreateCustomerComponent__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  props: [''],
+  props: ['captcha'],
   data: function data() {
     return {
       edit: false,
@@ -25150,41 +25187,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("section", { staticClass: "text-gray-600 body-font" }, [
     _c("div", { staticClass: "container px-5 py-4 mx-auto bg-white" }, [
-      _c("div", { staticClass: "flex flex-row justify-end" }, [
-        _c(
-          "button",
-          {
-            staticClass:
-              "flex flex-row gap-2 items-center py-2 px-8 bg-primary-button hover:bg-primary hover:text-white transition duration-150 ease-in-out text-black font-bold rounded-full mb-4 font-sans",
-            on: { click: _vm.cancel }
-          },
-          [
-            _c(
-              "svg",
-              {
-                staticClass: "w-4 h-4",
-                attrs: {
-                  fill: "none",
-                  stroke: "currentColor",
-                  viewBox: "0 0 24 24",
-                  xmlns: "http://www.w3.org/2000/svg"
-                }
-              },
-              [
-                _c("path", {
-                  attrs: {
-                    "stroke-linecap": "round",
-                    "stroke-linejoin": "round",
-                    "stroke-width": "2",
-                    d: "M15 19l-7-7 7-7"
-                  }
-                })
-              ]
-            ),
-            _vm._v("\n        Mevcut Kayıtlar\n      ")
-          ]
-        )
-      ]),
+      _c("div", { staticClass: "flex flex-row justify-end mb-4" }),
       _vm._v(" "),
       _c(
         "form",
@@ -25422,7 +25425,11 @@ var render = function() {
                     return _c(
                       "option",
                       { domProps: { value: department.id } },
-                      [_vm._v(_vm._s(department.name))]
+                      [
+                        _vm._v(
+                          _vm._s(department.name) + "\n                        "
+                        )
+                      ]
                     )
                   }),
                   0
@@ -25440,33 +25447,111 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
-          _vm._m(0)
+          _c(
+            "div",
+            {
+              staticClass:
+                "flex flex-row gap-2 justify-between border-t border-gray-200 pt-4"
+            },
+            [
+              _c(
+                "button",
+                {
+                  staticClass:
+                    "flex flex-row gap-2 items-center py-2 px-8 h-12 bg-primary-button hover:bg-primary hover:text-white transition duration-150 ease-in-out text-black font-bold rounded-full font-sans",
+                  on: { click: _vm.cancel }
+                },
+                [
+                  _c(
+                    "svg",
+                    {
+                      staticClass: "w-4 h-4",
+                      attrs: {
+                        fill: "none",
+                        stroke: "currentColor",
+                        viewBox: "0 0 24 24",
+                        xmlns: "http://www.w3.org/2000/svg"
+                      }
+                    },
+                    [
+                      _c("path", {
+                        attrs: {
+                          "stroke-linecap": "round",
+                          "stroke-linejoin": "round",
+                          "stroke-width": "2",
+                          d: "M15 19l-7-7 7-7"
+                        }
+                      })
+                    ]
+                  ),
+                  _vm._v(
+                    "\n                    Mevcut Kayıtlar\n                "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex flex-row gap-2" }, [
+                _c("div", { staticClass: "flex flex-row items-center gap-2" }, [
+                  _c(
+                    "p",
+                    {
+                      staticClass: "bg-primary text-white py-2 px-4 rounded-lg"
+                    },
+                    [_vm._v(_vm._s(this.captcha))]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "w-full flex flex-col gap-1" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.captcha,
+                          expression: "form.captcha"
+                        }
+                      ],
+                      staticClass:
+                        "flex-1 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out",
+                      attrs: {
+                        type: "text",
+                        id: "captcha",
+                        name: "date",
+                        placeholder: "Doğrulama Kodunu Giriniz"
+                      },
+                      domProps: { value: _vm.form.captcha },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "captcha", $event.target.value)
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "flex flex-row gap-2 items-center py-2 px-8 h-12 bg-primary-button hover:bg-primary hover:text-white transition duration-150 ease-in-out text-black font-bold rounded-full font-sans"
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Kaydet\n                    "
+                    )
+                  ]
+                )
+              ])
+            ]
+          )
         ]
       )
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "flex justify-end border-t border-gray-200 pt-4" },
-      [
-        _c(
-          "button",
-          {
-            staticClass:
-              "flex flex-row gap-2 items-center py-2 px-8 bg-primary-button hover:bg-primary hover:text-white transition duration-150 ease-in-out text-black font-bold rounded-full font-sans"
-          },
-          [_vm._v("\n          Kaydet\n        ")]
-        )
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -25495,7 +25580,17 @@ var render = function() {
         ? _c("div", [_c("customer-data-component")], 1)
         : _vm._e(),
       _vm._v(" "),
-      _vm.create ? _c("div", [_c("create-customer-component")], 1) : _vm._e()
+      _vm.create
+        ? _c(
+            "div",
+            [
+              _c("create-customer-component", {
+                attrs: { captcha: _vm.captcha }
+              })
+            ],
+            1
+          )
+        : _vm._e()
     ])
   ])
 }
@@ -25614,83 +25709,91 @@ var render = function() {
                   "w-full flex flex-row justify-end gap-2 border-t border-gray-400 pt-4"
               },
               [
-                _vm.current_page_url !== _vm.previous_page_url
-                  ? _c(
-                      "button",
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "flex flex-row gap-2 items-center py-2 px-8 transition duration-150 ease-in-out text-black font-bold rounded-full font-sans",
+                    class:
+                      _vm.current_page_url === _vm.previous_page_url
+                        ? "bg-gray-200 text-gray-500 cursor-not-allowed"
+                        : "bg-primary-button hover:bg-primary hover:text-white cursor-hover",
+                    attrs: {
+                      disabled: _vm.current_page_url === _vm.previous_page_url
+                    },
+                    on: {
+                      click: function($event) {
+                        return _vm.loadData(false)
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "svg",
                       {
-                        staticClass:
-                          "flex flex-row gap-2 items-center py-2 px-8 bg-primary-button hover:bg-primary hover:text-white transition duration-150 ease-in-out text-black font-bold rounded-full font-sans",
-                        on: {
-                          click: function($event) {
-                            return _vm.loadData(false)
-                          }
+                        staticClass: "w-4 h-4",
+                        attrs: {
+                          fill: "none",
+                          stroke: "currentColor",
+                          viewBox: "0 0 24 24",
+                          xmlns: "http://www.w3.org/2000/svg"
                         }
                       },
                       [
-                        _c(
-                          "svg",
-                          {
-                            staticClass: "w-4 h-4",
-                            attrs: {
-                              fill: "none",
-                              stroke: "currentColor",
-                              viewBox: "0 0 24 24",
-                              xmlns: "http://www.w3.org/2000/svg"
-                            }
-                          },
-                          [
-                            _c("path", {
-                              attrs: {
-                                "stroke-linecap": "round",
-                                "stroke-linejoin": "round",
-                                "stroke-width": "2",
-                                d: "M15 19l-7-7 7-7"
-                              }
-                            })
-                          ]
-                        ),
-                        _vm._v("\n                Önceki Veriler\n            ")
+                        _c("path", {
+                          attrs: {
+                            "stroke-linecap": "round",
+                            "stroke-linejoin": "round",
+                            "stroke-width": "2",
+                            d: "M15 19l-7-7 7-7"
+                          }
+                        })
                       ]
-                    )
-                  : _vm._e(),
+                    ),
+                    _vm._v("\n                Önceki Veriler\n            ")
+                  ]
+                ),
                 _vm._v(" "),
-                _vm.current_page_url !== _vm.next_page_url
-                  ? _c(
-                      "button",
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "flex flex-row gap-2 items-center py-2 px-8 transition duration-150 ease-in-out text-black font-bold rounded-full font-sans",
+                    class:
+                      _vm.current_page_url === _vm.next_page_url
+                        ? "bg-gray-200 text-gray-500 cursor-not-allowed"
+                        : "bg-primary-button hover:bg-primary hover:text-white cursor-hover",
+                    attrs: {
+                      disabled: _vm.current_page_url === _vm.next_page_url
+                    },
+                    on: { click: _vm.loadData }
+                  },
+                  [
+                    _c(
+                      "svg",
                       {
-                        staticClass:
-                          "flex flex-row gap-2 items-center py-2 px-8 bg-primary-button hover:bg-primary hover:text-white transition duration-150 ease-in-out text-black font-bold rounded-full font-sans",
-                        on: { click: _vm.loadData }
+                        staticClass: "w-4 h-4",
+                        attrs: {
+                          fill: "none",
+                          stroke: "currentColor",
+                          viewBox: "0 0 24 24",
+                          xmlns: "http://www.w3.org/2000/svg"
+                        }
                       },
                       [
-                        _c(
-                          "svg",
-                          {
-                            staticClass: "w-4 h-4",
-                            attrs: {
-                              fill: "none",
-                              stroke: "currentColor",
-                              viewBox: "0 0 24 24",
-                              xmlns: "http://www.w3.org/2000/svg"
-                            }
-                          },
-                          [
-                            _c("path", {
-                              attrs: {
-                                "stroke-linecap": "round",
-                                "stroke-linejoin": "round",
-                                "stroke-width": "2",
-                                d: "M9 5l7 7-7 7"
-                              }
-                            })
-                          ]
-                        ),
-                        _vm._v(
-                          "\n                Sonraki Veriler\n            "
-                        )
+                        _c("path", {
+                          attrs: {
+                            "stroke-linecap": "round",
+                            "stroke-linejoin": "round",
+                            "stroke-width": "2",
+                            d: "M9 5l7 7-7 7"
+                          }
+                        })
                       ]
-                    )
-                  : _vm._e()
+                    ),
+                    _vm._v("\n                Sonraki Veriler\n            ")
+                  ]
+                )
               ]
             )
           : _vm._e()
