@@ -74,6 +74,10 @@ export default {
     },
     mounted() {
         this.loadData();
+
+        Fire.$on('create-success', () => {
+            this.loadData();
+        })
     }
 }
 </script>

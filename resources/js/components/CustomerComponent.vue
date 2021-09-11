@@ -35,7 +35,7 @@ export default {
         }
     },
     mounted() {
-        Fire.$on(['cancel', 'create'], () => {
+        Fire.$on(['cancel', 'create', 'create-success'], (e) => {
             this.createNew();
         });
     }

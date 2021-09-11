@@ -26,9 +26,9 @@ class CustomerStoreRequest extends FormRequest
         return [
             'name' => 'required|min:4|max:50',
             'email' => 'required|email|max:50',
-            'gsm' => 'required|max:25',
+            'gsm_no' => 'required|max:25',
             'birthday' => 'required|date',
-            'department' => 'required|exists:departments,id'
+            'department_id' => 'required|exists:departments,id'
         ];
     }
 
@@ -41,12 +41,12 @@ class CustomerStoreRequest extends FormRequest
             'email.required' => 'Müşterinin Email Adresi Girilmelidir',
             'email.email' => 'Girilen Email Adresi Geçerli Olmalıdır',
             'email.max' => 'Girilen Email Adresi Maksimum :max Karakter Olabilir',
-            'gsm.required' => 'Müşterinin GSM Numarası Girilmelidir',
-            'gsm.max' => 'Girilen GSM Numarası Maksimum :max Karakter Olabilir',
+            'gsm_no.required' => 'Müşterinin GSM Numarası Girilmelidir',
+            'gsm_no.max' => 'Girilen GSM Numarası Maksimum :max Karakter Olabilir',
             'birthday.required' => 'Müşterinin Doğum Tarihi Girilmelidir',
             'birthday.date' => 'Girilen Tarih Bilgisi Geçerli Değildir!',
-            'department.required' => 'Müşterinin Birimi Seçilmelidir',
-            'department.exists' => 'Seçilen Birim Geçerli Değildir!'
+            'department_id.required' => 'Müşterinin Birimi Seçilmelidir',
+            'department_id.exists' => 'Seçilen Birim Geçerli Değildir!'
         ];
     }
 }

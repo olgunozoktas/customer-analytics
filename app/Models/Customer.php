@@ -14,7 +14,11 @@ class Customer extends Model
     ];
 
     protected $fillable = [
-        'department_id'
+        'name',
+        'email',
+        'gsm_no',
+        'department_id',
+        'birthday'
     ];
 
     public function department()
