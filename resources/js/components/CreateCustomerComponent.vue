@@ -26,7 +26,7 @@
                     </div>
                     <div class="w-full flex flex-col gap-1">
                         <label for="birthday" class="text-lg font-bold text-gray-600">Müşterinin Doğum Tarihi:</label>
-                        <input type="date" id="birthday" name="date" v-model="form.birthday"
+                        <input type="date" id="birthday" name="birthday" v-model="form.birthday"
                                class="flex-1 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         <div class="text-red-500" v-if="form.errors.has('birthday')"
                              v-html="form.errors.get('birthday')"/>

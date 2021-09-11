@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\WeatherController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DepartmentController;
@@ -23,8 +24,15 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/customers/data', [CustomerController::class, 'data'])->name('customers.data');
-Route::post('/customer/store', [CustomerController::class, 'store'])->name('customer.store');
-Route::get('/departments', [DepartmentController::class, 'data'])->name('departments.data');
+Route::middleware('auth')->group(function () {
+    Route::get('/customers/data', [CustomerController::class, 'data'])->name('customers.data');
+    Route::post('/customer/store', [CustomerController::class, 'store'])->name('customer.store');
+    Route::get('/departments', [DepartmentController::class, 'data'])->name('departments.data');
+
+    Route::get('/weather-widget', [WeatherController::class, 'index'])->name('weather');
+    Route::get('/weather-history/{day?}', [WeatherController::class, 'show'])
+        ->where('day', '[1-3]')
+        ->name('weather-history');
+});
 
 require __DIR__ . '/auth.php';
