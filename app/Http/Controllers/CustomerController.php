@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CustomerStoreRequest;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 
@@ -18,7 +19,7 @@ class CustomerController extends Controller
         return Customer::with('department')->get();
     }
 
-    public function store(Request $request)
+    public function store(CustomerStoreRequest $request)
     {
         dd($request->all());
     }

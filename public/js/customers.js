@@ -4076,6 +4076,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: [''],
@@ -22040,7 +22045,14 @@ var render = function() {
                     _vm.$set(_vm.form, "name", $event.target.value)
                   }
                 }
-              })
+              }),
+              _vm._v(" "),
+              _vm.form.errors.has("name")
+                ? _c("div", {
+                    staticClass: "text-red-500",
+                    domProps: { innerHTML: _vm._s(_vm.form.errors.get("name")) }
+                  })
+                : _vm._e()
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "w-full flex flex-col gap-1" }, [
@@ -22074,7 +22086,16 @@ var render = function() {
                     _vm.$set(_vm.form, "email", $event.target.value)
                   }
                 }
-              })
+              }),
+              _vm._v(" "),
+              _vm.form.errors.has("email")
+                ? _c("div", {
+                    staticClass: "text-red-500",
+                    domProps: {
+                      innerHTML: _vm._s(_vm.form.errors.get("email"))
+                    }
+                  })
+                : _vm._e()
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "w-full flex flex-col gap-1" }, [
@@ -22108,7 +22129,14 @@ var render = function() {
                     _vm.$set(_vm.form, "gsm", $event.target.value)
                   }
                 }
-              })
+              }),
+              _vm._v(" "),
+              _vm.form.errors.has("gsm")
+                ? _c("div", {
+                    staticClass: "text-red-500",
+                    domProps: { innerHTML: _vm._s(_vm.form.errors.get("gsm")) }
+                  })
+                : _vm._e()
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "w-full flex flex-col gap-1" }, [
@@ -22142,7 +22170,16 @@ var render = function() {
                     _vm.$set(_vm.form, "birthday", $event.target.value)
                   }
                 }
-              })
+              }),
+              _vm._v(" "),
+              _vm.form.errors.has("birthday")
+                ? _c("div", {
+                    staticClass: "text-red-500",
+                    domProps: {
+                      innerHTML: _vm._s(_vm.form.errors.get("birthday"))
+                    }
+                  })
+                : _vm._e()
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "w-full flex flex-col gap-1" }, [
@@ -22195,7 +22232,16 @@ var render = function() {
                   ])
                 }),
                 0
-              )
+              ),
+              _vm._v(" "),
+              _vm.form.errors.has("department")
+                ? _c("div", {
+                    staticClass: "text-red-500",
+                    domProps: {
+                      innerHTML: _vm._s(_vm.form.errors.get("department"))
+                    }
+                  })
+                : _vm._e()
             ])
           ]),
           _vm._v(" "),
