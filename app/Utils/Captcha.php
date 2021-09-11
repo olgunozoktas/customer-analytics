@@ -3,11 +3,12 @@
 namespace App\Utils;
 
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Session;
 use Nette\Utils\Random;
 
 class Captcha
 {
-    static $cookieKey = 'captcha';
+    static $sessionKey = 'captcha';
 
     /**
      * @return string
@@ -15,7 +16,7 @@ class Captcha
     static function generate(): string
     {
         $captcha = Random::generate(5);
-        setcookie(self::$cookieKey, $captcha);
+        Session::put(self::$sessionKey, $captcha);
 
         return $captcha;
     }
@@ -26,7 +27,7 @@ class Captcha
      */
     static function validate($captcha): bool
     {
-        return $captcha == $_COOKIE[self::$cookieKey];
+        return $captcha == Session::get(self::$sessionKey);
     }
 
     /**

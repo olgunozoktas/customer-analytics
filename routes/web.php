@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\DepartmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,5 +22,9 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::get('/customers/data', [CustomerController::class, 'data'])->name('customers.data');
+Route::post('/customer/store', [CustomerController::class, 'store'])->name('customer.store');
+Route::get('/departments', [DepartmentController::class, 'data'])->name('departments.data');
 
 require __DIR__ . '/auth.php';

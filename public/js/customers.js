@@ -4127,7 +4127,7 @@ var unprocessableEntity = 422;
     getDepartments: function getDepartments() {
       var _this = this;
 
-      axios.get(window.baseUrl + 'api/departments').then(function (res) {
+      axios.get(window.baseUrl + 'departments').then(function (res) {
         _this.departments = res.data; // Default Select First Deparment If Department Is Not Set Before -> Mostly For Editing Purposes
 
         _this.form.department_id = (_this.form.department_id === '' && res.data.length) > 0 ? res.data[0].id : '';
@@ -4147,7 +4147,7 @@ var unprocessableEntity = 422;
         return;
       }
 
-      this.form.post(window.baseUrl + "api/customer/store").then(function (res) {
+      this.form.post(window.baseUrl + "customer/store").then(function (res) {
         toast.fire({
           position: "top",
           icon: res.data.response,
@@ -4329,7 +4329,7 @@ __webpack_require__.r(__webpack_exports__);
       current_page: '',
       customers: [],
       current_page_url: '',
-      next_page_url: window.baseUrl + 'api/customers/data',
+      next_page_url: window.baseUrl + 'customers/data',
       previous_page_url: ''
     };
   },

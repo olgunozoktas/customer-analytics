@@ -80,7 +80,7 @@ export default {
             current_page: '',
             customers: [],
             current_page_url: '',
-            next_page_url: window.baseUrl + 'api/customers/data',
+            next_page_url: window.baseUrl + 'customers/data',
             previous_page_url: '',
         }
     },

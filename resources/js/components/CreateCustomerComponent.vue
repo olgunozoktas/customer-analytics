@@ -106,7 +106,7 @@ export default {
 
     methods: {
         getDepartments() {
-            axios.get(window.baseUrl + 'api/departments').then(res => {
+            axios.get(window.baseUrl + 'departments').then(res => {
                 this.departments = res.data;
 
                 // Default Select First Deparment If Department Is Not Set Before -> Mostly For Editing Purposes
@@ -125,7 +125,7 @@ export default {
                 return;
             }
 
-            this.form.post(window.baseUrl + "api/customer/store").then(res => {
+            this.form.post(window.baseUrl + "customer/store").then(res => {
                 toast.fire({
                     position: "top",
                     icon: res.data.response,
