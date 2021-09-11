@@ -143,7 +143,7 @@ export default {
                     toast.fire({
                         position: "top",
                         icon: warning,
-                        title: (errors.captcha !== undefined && errors.length === 0) ? e.response.data.errors.captcha : warningMessage
+                        title: (errors.captcha !== undefined) ? e.response.data.errors.captcha : warningMessage
                     });
                 }
             });
