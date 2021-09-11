@@ -1,9 +1,9 @@
 <template>
     <section class="text-gray-600 body-font">
-        <div class="container px-5 py-4 mx-auto bg-white">
+        <div class="container px-5 py-4 mx-auto bg-white flex flex-col">
             <div class="flex flex-row justify-end">
                 <button @click="create"
-                        class="flex flex-row gap-2 items-center py-2 px-8 bg-primary-button transition duration-150 ease-in-out text-black font-bold rounded-full mb-4 font-sans">
+                        class="flex flex-row gap-2 items-center py-2 px-8 bg-primary-button hover:bg-primary hover:text-white transition duration-150 ease-in-out text-black font-bold rounded-full mb-4 font-sans">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                          xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -29,7 +29,7 @@
                             Birimi
                         </th>
                         <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
-                            Doğum Günü
+                            Doğum Tarihi
                         </th>
                         <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
                             Kayıt Tarihi
@@ -48,6 +48,25 @@
                     </tbody>
                 </table>
             </div>
+            <div v-if="current_page_url !== next_page_url || current_page_url !== previous_page_url" class="w-full flex flex-row justify-end gap-2 border-t border-gray-400 pt-4">
+                <button v-if="current_page_url !== previous_page_url" @click="loadData(false)"
+                    class="flex flex-row gap-2 items-center py-2 px-8 bg-primary-button hover:bg-primary hover:text-white transition duration-150 ease-in-out text-black font-bold rounded-full font-sans">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                    Önceki Veriler
+                </button>
+                <button v-if="current_page_url !== next_page_url" @click="loadData"
+                    class="flex flex-row gap-2 items-center py-2 px-8 bg-primary-button hover:bg-primary hover:text-white transition duration-150 ease-in-out text-black font-bold rounded-full font-sans">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                    Sonraki Veriler
+                </button>
+            </div>
         </div>
     </section>
 </template>
@@ -58,14 +77,23 @@ export default {
     props: [''],
     data() {
         return {
+            current_page: '',
             customers: [],
+            current_page_url: '',
+            next_page_url: window.baseUrl + 'api/customers/data',
+            previous_page_url: '',
         }
     },
 
     methods: {
-        loadData() {
-            axios.get(window.baseUrl + 'api/customers/data').then(res => {
-                this.customers = res.data;
+        loadData(is_next = true) {
+            let url = is_next ? this.next_page_url : this.previous_page_url;
+            axios.get(url).then(res => {
+                this.customers = res.data.data;
+                this.current_page = res.data.current_page;
+                this.current_page_url = res.data.path + '?page=' + res.data.current_page;
+                this.next_page_url = res.data.next_page_url != null ? res.data.next_page_url : this.current_page_url;
+                this.previous_page_url = res.data.current_page > 1 ? res.data.path + `?page=${res.data.current_page - 1}` : res.data.path + `?page=${res.data.current_page}`;
             }).catch(e => console.log(e.message))
         },
         create() {

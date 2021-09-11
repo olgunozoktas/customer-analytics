@@ -17,11 +17,11 @@ class CustomerController extends Controller
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+     * @return \Illuminate\Contracts\Pagination\Paginator
      */
     public function data()
     {
-        return Customer::with('department')->orderBy('created_at','desc')->get();
+        return Customer::with('department')->orderBy('created_at','desc')->simplePaginate(5);
     }
 
     /**

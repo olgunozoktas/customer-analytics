@@ -3,7 +3,7 @@
     <div class="container px-5 py-4 mx-auto bg-white">
       <div class="flex flex-row justify-end">
         <button @click="cancel"
-                class="flex flex-row gap-2 items-center py-2 px-8 bg-primary-button transition duration-150 ease-in-out text-black font-bold rounded-full mb-4 font-sans">
+                class="flex flex-row gap-2 items-center py-2 px-8 bg-primary-button hover:bg-primary hover:text-white transition duration-150 ease-in-out text-black font-bold rounded-full mb-4 font-sans">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
           </svg>
@@ -48,7 +48,7 @@
         </div>
         <div class="flex justify-end border-t border-gray-200 pt-4">
           <button
-              class="flex flex-row gap-2 items-center py-2 px-8 bg-primary-button transition duration-150 ease-in-out text-black font-bold rounded-full font-sans">
+              class="flex flex-row gap-2 items-center py-2 px-8 bg-primary-button hover:bg-primary hover:text-white transition duration-150 ease-in-out text-black font-bold rounded-full font-sans">
             Kaydet
           </button>
         </div>
