@@ -4100,6 +4100,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var success = 'success';
 var error = 'error';
@@ -25206,243 +25216,256 @@ var render = function() {
             { staticClass: "grid grid-cols-1 md:grid-cols-2 gap-2 gap-y-4" },
             [
               _c("div", { staticClass: "w-full flex flex-col gap-1" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "text-lg font-bold text-gray-600",
-                    attrs: { for: "name" }
-                  },
-                  [_vm._v("Müşterinin Tam Adı:")]
-                ),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
+                _c("div", { staticClass: "w-full flex flex-col gap-1" }, [
+                  _c(
+                    "label",
                     {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.form.name,
-                      expression: "form.name"
-                    }
-                  ],
-                  staticClass:
-                    "flex-1 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out",
-                  attrs: { type: "text", id: "name", name: "name" },
-                  domProps: { value: _vm.form.name },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.form, "name", $event.target.value)
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _vm.form.errors.has("name")
-                  ? _c("div", {
-                      staticClass: "text-red-500",
-                      domProps: {
-                        innerHTML: _vm._s(_vm.form.errors.get("name"))
-                      }
-                    })
-                  : _vm._e()
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "w-full flex flex-col gap-1" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "text-lg font-bold text-gray-600",
-                    attrs: { for: "email" }
-                  },
-                  [_vm._v("Müşterinin Email Adresi:")]
-                ),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.form.email,
-                      expression: "form.email"
-                    }
-                  ],
-                  staticClass:
-                    "flex-1 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out",
-                  attrs: { type: "text", id: "email", name: "email" },
-                  domProps: { value: _vm.form.email },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.form, "email", $event.target.value)
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _vm.form.errors.has("email")
-                  ? _c("div", {
-                      staticClass: "text-red-500",
-                      domProps: {
-                        innerHTML: _vm._s(_vm.form.errors.get("email"))
-                      }
-                    })
-                  : _vm._e()
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "w-full flex flex-col gap-1" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "text-lg font-bold text-gray-600",
-                    attrs: { for: "gsm_no" }
-                  },
-                  [_vm._v("Müşterinin GSM Numarası:")]
-                ),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.form.gsm_no,
-                      expression: "form.gsm_no"
-                    }
-                  ],
-                  staticClass:
-                    "flex-1 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out",
-                  attrs: { type: "text", id: "gsm_no", name: "gsm_no" },
-                  domProps: { value: _vm.form.gsm_no },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.form, "gsm_no", $event.target.value)
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _vm.form.errors.has("gsm_no")
-                  ? _c("div", {
-                      staticClass: "text-red-500",
-                      domProps: {
-                        innerHTML: _vm._s(_vm.form.errors.get("gsm_no"))
-                      }
-                    })
-                  : _vm._e()
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "w-full flex flex-col gap-1" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "text-lg font-bold text-gray-600",
-                    attrs: { for: "birthday" }
-                  },
-                  [_vm._v("Müşterinin Doğum Tarihi:")]
-                ),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.form.birthday,
-                      expression: "form.birthday"
-                    }
-                  ],
-                  staticClass:
-                    "flex-1 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out",
-                  attrs: { type: "date", id: "birthday", name: "birthday" },
-                  domProps: { value: _vm.form.birthday },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.form, "birthday", $event.target.value)
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _vm.form.errors.has("birthday")
-                  ? _c("div", {
-                      staticClass: "text-red-500",
-                      domProps: {
-                        innerHTML: _vm._s(_vm.form.errors.get("birthday"))
-                      }
-                    })
-                  : _vm._e()
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "w-full flex flex-col gap-1" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "text-lg font-bold text-gray-600",
-                    attrs: { for: "department_id" }
-                  },
-                  [_vm._v("Müşterinin Birimi:")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "select",
-                  {
+                      staticClass: "text-lg font-bold text-gray-600",
+                      attrs: { for: "name" }
+                    },
+                    [_vm._v("Müşterinin Tam Adı:")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
                     directives: [
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.form.department_id,
-                        expression: "form.department_id"
+                        value: _vm.form.name,
+                        expression: "form.name"
                       }
                     ],
                     staticClass:
                       "flex-1 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out",
-                    attrs: { id: "department_id", name: "department_id" },
+                    attrs: { type: "text", id: "name", name: "name" },
+                    domProps: { value: _vm.form.name },
                     on: {
-                      change: function($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function(o) {
-                            return o.selected
-                          })
-                          .map(function(o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.$set(
-                          _vm.form,
-                          "department_id",
-                          $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        )
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "name", $event.target.value)
                       }
                     }
-                  },
-                  _vm._l(_vm.departments, function(department) {
-                    return _c(
-                      "option",
-                      { domProps: { value: department.id } },
-                      [
-                        _vm._v(
-                          _vm._s(department.name) + "\n                        "
-                        )
-                      ]
-                    )
                   }),
-                  0
-                ),
-                _vm._v(" "),
-                _vm.form.errors.has("department_id")
-                  ? _c("div", {
-                      staticClass: "text-red-500",
-                      domProps: {
-                        innerHTML: _vm._s(_vm.form.errors.get("department_id"))
+                  _vm._v(" "),
+                  _vm.form.errors.has("name")
+                    ? _c("div", {
+                        staticClass: "text-red-500",
+                        domProps: {
+                          innerHTML: _vm._s(_vm.form.errors.get("name"))
+                        }
+                      })
+                    : _vm._e()
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "w-full flex flex-col gap-1" }, [
+                _c("div", { staticClass: "w-full flex flex-col gap-1" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "text-lg font-bold text-gray-600",
+                      attrs: { for: "email" }
+                    },
+                    [_vm._v("Müşterinin Email Adresi:")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.email,
+                        expression: "form.email"
                       }
-                    })
-                  : _vm._e()
+                    ],
+                    staticClass:
+                      "flex-1 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out",
+                    attrs: { type: "text", id: "email", name: "email" },
+                    domProps: { value: _vm.form.email },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "email", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm.form.errors.has("email")
+                    ? _c("div", {
+                        staticClass: "text-red-500",
+                        domProps: {
+                          innerHTML: _vm._s(_vm.form.errors.get("email"))
+                        }
+                      })
+                    : _vm._e()
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "w-full flex flex-col gap-1" }, [
+                _c("div", { staticClass: "w-full flex flex-col gap-1" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "text-lg font-bold text-gray-600",
+                      attrs: { for: "gsm_no" }
+                    },
+                    [_vm._v("Müşterinin GSM Numarası:")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.gsm_no,
+                        expression: "form.gsm_no"
+                      }
+                    ],
+                    staticClass:
+                      "flex-1 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out",
+                    attrs: { type: "text", id: "gsm_no", name: "gsm_no" },
+                    domProps: { value: _vm.form.gsm_no },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "gsm_no", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm.form.errors.has("gsm_no")
+                    ? _c("div", {
+                        staticClass: "text-red-500",
+                        domProps: {
+                          innerHTML: _vm._s(_vm.form.errors.get("gsm_no"))
+                        }
+                      })
+                    : _vm._e()
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "w-full flex flex-col gap-1" }, [
+                _c("div", { staticClass: "w-full flex flex-col gap-1" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "text-lg font-bold text-gray-600",
+                      attrs: { for: "birthday" }
+                    },
+                    [_vm._v("Müşterinin Doğum Tarihi:")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.birthday,
+                        expression: "form.birthday"
+                      }
+                    ],
+                    staticClass:
+                      "flex-1 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out",
+                    attrs: { type: "date", id: "birthday", name: "birthday" },
+                    domProps: { value: _vm.form.birthday },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "birthday", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm.form.errors.has("birthday")
+                    ? _c("div", {
+                        staticClass: "text-red-500",
+                        domProps: {
+                          innerHTML: _vm._s(_vm.form.errors.get("birthday"))
+                        }
+                      })
+                    : _vm._e()
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "w-full flex flex-col gap-1" }, [
+                _c("div", { staticClass: "w-full flex flex-col gap-1" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "text-lg font-bold text-gray-600",
+                      attrs: { for: "department_id" }
+                    },
+                    [_vm._v("Müşterinin Birimi:")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.department_id,
+                          expression: "form.department_id"
+                        }
+                      ],
+                      staticClass:
+                        "flex-1 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out",
+                      attrs: { id: "department_id", name: "department_id" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.form,
+                            "department_id",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    _vm._l(_vm.departments, function(department) {
+                      return _c(
+                        "option",
+                        { domProps: { value: department.id } },
+                        [
+                          _vm._v(
+                            _vm._s(department.name) +
+                              "\n                            "
+                          )
+                        ]
+                      )
+                    }),
+                    0
+                  ),
+                  _vm._v(" "),
+                  _vm.form.errors.has("department_id")
+                    ? _c("div", {
+                        staticClass: "text-red-500",
+                        domProps: {
+                          innerHTML: _vm._s(
+                            _vm.form.errors.get("department_id")
+                          )
+                        }
+                      })
+                    : _vm._e()
+                ])
               ])
             ]
           ),

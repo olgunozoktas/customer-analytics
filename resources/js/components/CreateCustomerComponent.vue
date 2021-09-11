@@ -7,41 +7,51 @@
             <form @submit.prevent="saveCustomerData" class="flex flex-col gap-y-4">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-2 gap-y-4">
                     <div class="w-full flex flex-col gap-1">
-                        <label for="name" class="text-lg font-bold text-gray-600">Müşterinin Tam Adı:</label>
-                        <input type="text" id="name" name="name" v-model="form.name"
-                               class="flex-1 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                        <div class="text-red-500" v-if="form.errors.has('name')" v-html="form.errors.get('name')"/>
+                        <div class="w-full flex flex-col gap-1">
+                            <label for="name" class="text-lg font-bold text-gray-600">Müşterinin Tam Adı:</label>
+                            <input type="text" id="name" name="name" v-model="form.name"
+                                   class="flex-1 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                            <div class="text-red-500" v-if="form.errors.has('name')" v-html="form.errors.get('name')"/>
+                        </div>
                     </div>
                     <div class="w-full flex flex-col gap-1">
-                        <label for="email" class="text-lg font-bold text-gray-600">Müşterinin Email Adresi:</label>
-                        <input type="text" id="email" name="email" v-model="form.email"
-                               class="flex-1 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                        <div class="text-red-500" v-if="form.errors.has('email')" v-html="form.errors.get('email')"/>
+                        <div class="w-full flex flex-col gap-1">
+                            <label for="email" class="text-lg font-bold text-gray-600">Müşterinin Email Adresi:</label>
+                            <input type="text" id="email" name="email" v-model="form.email"
+                                   class="flex-1 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                            <div class="text-red-500" v-if="form.errors.has('email')" v-html="form.errors.get('email')"/>
+                        </div>
                     </div>
                     <div class="w-full flex flex-col gap-1">
-                        <label for="gsm_no" class="text-lg font-bold text-gray-600">Müşterinin GSM Numarası:</label>
-                        <input type="text" id="gsm_no" name="gsm_no" v-model="form.gsm_no"
-                               class="flex-1 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                        <div class="text-red-500" v-if="form.errors.has('gsm_no')" v-html="form.errors.get('gsm_no')"/>
+                        <div class="w-full flex flex-col gap-1">
+                            <label for="gsm_no" class="text-lg font-bold text-gray-600">Müşterinin GSM Numarası:</label>
+                            <input type="text" id="gsm_no" name="gsm_no" v-model="form.gsm_no"
+                                   class="flex-1 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                            <div class="text-red-500" v-if="form.errors.has('gsm_no')" v-html="form.errors.get('gsm_no')"/>
+                        </div>
                     </div>
                     <div class="w-full flex flex-col gap-1">
-                        <label for="birthday" class="text-lg font-bold text-gray-600">Müşterinin Doğum Tarihi:</label>
-                        <input type="date" id="birthday" name="birthday" v-model="form.birthday"
-                               class="flex-1 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                        <div class="text-red-500" v-if="form.errors.has('birthday')"
-                             v-html="form.errors.get('birthday')"/>
+                        <div class="w-full flex flex-col gap-1">
+                            <label for="birthday" class="text-lg font-bold text-gray-600">Müşterinin Doğum Tarihi:</label>
+                            <input type="date" id="birthday" name="birthday" v-model="form.birthday"
+                                   class="flex-1 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                            <div class="text-red-500" v-if="form.errors.has('birthday')"
+                                 v-html="form.errors.get('birthday')"/>
+                        </div>
                     </div>
                     <div class="w-full flex flex-col gap-1">
-                        <label for="department_id" class="text-lg font-bold text-gray-600">Müşterinin Birimi:</label>
-                        <select id="department_id" name="department_id" v-model="form.department_id"
-                                class="flex-1 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                            <option :value="department.id" v-for="department in departments">{{
-                                    department.name
-                                }}
-                            </option>
-                        </select>
-                        <div class="text-red-500" v-if="form.errors.has('department_id')"
-                             v-html="form.errors.get('department_id')"/>
+                        <div class="w-full flex flex-col gap-1">
+                            <label for="department_id" class="text-lg font-bold text-gray-600">Müşterinin Birimi:</label>
+                            <select id="department_id" name="department_id" v-model="form.department_id"
+                                    class="flex-1 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                <option :value="department.id" v-for="department in departments">{{
+                                        department.name
+                                    }}
+                                </option>
+                            </select>
+                            <div class="text-red-500" v-if="form.errors.has('department_id')"
+                                 v-html="form.errors.get('department_id')"/>
+                        </div>
                     </div>
                 </div>
                 <div class="flex flex-col flex-col-reverse md:flex-row gap-2 justify-between border-t border-gray-200 pt-4">
