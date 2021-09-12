@@ -33,11 +33,23 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
+        $messages = [
+            'name.required' => 'İsim Alanı Doldurulmalıdır.',
+            'name.max' => 'İsim Alanına Girilen Değer Maksimum :max Karakter Olabilir.',
+            'email.required' => 'Email Bilgisi Girilmelidir',
+            'email.email' => 'Girilen Email Adresi Geçerli Değil.',
+            'email.max' => 'Girilen Email Adresi Maksimum :max Karakter Olabilir',
+            'email.unique' => 'Girilen Email Adresi Daha Önce Kullanılmış',
+            'password.required' => 'Şifre Alanı Doldurulmalıdır',
+            'password.confirmed' => 'Şifreleriniz Uyuşmamaktadır!',
+            'password.min' => 'Girilen Şifre Minimum :min Karakter Olmalıdır'
+        ];
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
+        ], $messages);
 
         $user = User::create([
             'name' => $request->name,
