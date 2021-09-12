@@ -10,6 +10,6 @@
 
 ![Müsteri Olusturma Ekranı](new-client.png)
 
-### Ana Sayfa - Hava Durumu Widget Sayfası
+### Hava Durumu Widget Sayfası
 
 ![Hava Durumu Widget Sayfasi](weather-widget.png)
