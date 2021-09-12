@@ -18,12 +18,12 @@ php artisan mailto:marketing-customers
 
 İlgili komutlar için 2 farklı çalışma şekli vardır,
 
-- Komut çalışır çalışmaz email gönderimin yapılması
+- Komut çalışır çalışmaz email gönderimin yapılması (Direkt olarak)
 - Emaillerin sıraya alınarak gönderilmesi
 
 ## Direkt olarak emaillerin gönderilmesi
 
-1. Aşağıda gösterildiği gibi manuel olarak çalıştırılarak direkt olarak emaillerin gönderilimi yapılabilir
+1. Aşağıda gösterildiği gibi ilgili komut manuel olarak çalıştırılarak direkt olarak emaillerin gönderilimi yapılabilir
 
 ![Direkt Olarak Gonderim](scheduled-jobs-run.png)
 
@@ -32,7 +32,6 @@ php artisan mailto:marketing-customers
 ![Zamanlanmis Calisma](scheduled-jobs.png)
 
 İlgili komutların otomatik çalışması için sunucuda cron ayarlarının yapılması gerekmektedir.
-
 
 ## Emaillerin sıraya alınıp gönderilmesi
 
