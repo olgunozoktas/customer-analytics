@@ -14,6 +14,16 @@ composer install
 php artisan migrate --seed
 ```
 
+.env dosyası içerisinde veritabanı ayarlarının yapılması gerekmektedir.
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=
+DB_USERNAME=
+DB_PASSWORD=
+```
+
 ## 💻 [Ekran Görüntüleri](Documentation/Screenshots/content.md)
 ## ⌚ [Zamanlanmış Email Gönderimi](Documentation/Jobs/content.md)
 ## ☁️ [Hava Durumu Widget](Documentation/Weather/content.md)
